@@ -1,19 +1,40 @@
-import { useState } from "react";
-import { View, ScrollView, SafeAreaView, Text  } from "react-native";
-import {COLORS, icons, images, SIZES} from '../constants'
-import { Stack, useRouter } from "@react-navigation/native";
-// import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components";
+import React from 'react';
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { COLORS, icons, images, SIZES } from '../constants';
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
 
-const Home = ()=> {
+// Create a stack navigator
+const Stack = createStackNavigator();
 
-    // const router = useRouter()
-
-    return (
-        <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
-            {/* <Stack.Screen options = {{backgroundColor: COLORS.lightWhite}}/> */}
-            <Stack />
-        </SafeAreaView>
-    )
-}
+const Home = () => {
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite, margin: 4 }}>
+      <Stack.Navigator >
+        <Stack.Screen 
+          name='Welcome' 
+          options={{ 
+            headerStyle: { backgroundColor: COLORS.lightWhite }, 
+            headerShadowVisible: false, 
+            headerLeft: () => <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />,
+            headerRight: () => <ScreenHeaderBtn iconUrl={images.profile} dimension="100%"/>,
+            headerTitle:" "
+          }} 
+          
+        >
+          {() => (
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={{ flex: 1, padding: SIZES.medium }}>
+                <Welcome />
+                <Popularjobs/>
+                <Nearbyjobs/>
+              </View>
+            </ScrollView>
+          )}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </SafeAreaView>
+  );
+};
 
 export default Home;
