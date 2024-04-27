@@ -1,10 +1,10 @@
 import { Text } from "react-native"
 
 
-const jobDetails = () => {
+const JobDetails = () => {
   return (
     <Text>jobDetails</Text>
   )
 }
 
-export default jobDetails
+export default JobDetails;
