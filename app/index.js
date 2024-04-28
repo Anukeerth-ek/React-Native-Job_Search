@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { COLORS, icons, images, SIZES } from '../constants';
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
+import JobDetails from './job-details/[id]';
 
 // Create a stack navigator
 const Stack = createStackNavigator();
@@ -32,6 +33,7 @@ const Home = () => {
             </ScrollView>
           )}
         </Stack.Screen>
+        <Stack.Screen name='JobDetails' component={JobDetails} />
       </Stack.Navigator>
     </SafeAreaView>
   );
